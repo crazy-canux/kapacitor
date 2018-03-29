@@ -20,7 +20,7 @@ import argparse
 os.environ["GO15VENDOREXPERIMENT"] = "1"
 
 # PACKAGING VARIABLES
-PACKAGE_NAME = "kapacitor"
+PACKAGE_NAME = "maf-alert"
 INSTALL_ROOT_DIR = "/usr/bin"
 LOG_DIR = "/var/log/kapacitor"
 DATA_DIR = "/var/lib/kapacitor"
@@ -103,15 +103,12 @@ supported_packages = {
 
 def print_banner():
     logging.info("""
+ __  __    _    _____      _    _     _____ ____ _____ 
+|  \/  |  / \  |  ___|    / \  | |   | ____|  _ \_   _|
+| |\/| | / _ \ | |_      / _ \ | |   |  _| | |_) || |  
+| |  | |/ ___ \|  _|    / ___ \| |___| |___|  _ < | |  
+|_|  |_/_/   \_\_|     /_/   \_\_____|_____|_| \_\|_|  
 
-'##:::'##::::'###::::'########:::::'###:::::'######::'####:'########::'#######::'########::
- ##::'##::::'## ##::: ##.... ##:::'## ##:::'##... ##:. ##::... ##..::'##.... ##: ##.... ##:
- ##:'##::::'##:. ##:: ##:::: ##::'##:. ##:: ##:::..::: ##::::: ##:::: ##:::: ##: ##:::: ##:
- #####::::'##:::. ##: ########::'##:::. ##: ##:::::::: ##::::: ##:::: ##:::: ##: ########::
- ##. ##::: #########: ##.....::: #########: ##:::::::: ##::::: ##:::: ##:::: ##: ##.. ##:::
- ##:. ##:: ##.... ##: ##:::::::: ##.... ##: ##::: ##:: ##::::: ##:::: ##:::: ##: ##::. ##::
- ##::. ##: ##:::: ##: ##:::::::: ##:::: ##:. ######::'####:::: ##::::. #######:: ##:::. ##:
-..::::..::..:::::..::..:::::::::..:::::..:::......:::....:::::..::::::.......:::..:::::..::
  Build Script
 """)
 
@@ -692,8 +689,7 @@ def package(build_output, pkg_name, version, nightly=False, iteration=1, static=
                         package_arch = arch
                     if not release and not nightly:
                         # For non-release builds, just use the commit hash as the version
-                        package_version = "{}~{}".format(version,
-                                                         get_current_commit(short=True))
+                        package_version = "{}".format(version)
                         package_iteration = "0"
                     package_build_root = build_root
                     current_location = build_output[platform][arch]
