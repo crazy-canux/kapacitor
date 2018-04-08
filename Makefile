@@ -85,10 +85,10 @@ test-all: vet
 	go test ./...
 
 package:
-	./build.py --package --platform=linux --arch=amd64 --clean --version=1.5.0 --iteration=1 --no-get
+	./build.py --package --platform=linux --arch=amd64 --clean --version=1.4.1 --iteration=1 --no-get
 
 win-package:
-	./build.py --package --platform=windows --arch=amd64 --clean --version=1.5.0 --iteration=1
+	./build.py --package --platform=windows --arch=amd64 --clean --version=1.4.1 --iteration=1
 
 clean:
 	rm -f kapacitor
